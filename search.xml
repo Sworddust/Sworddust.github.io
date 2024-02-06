@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>CheckChan结合n8n发送企业微信应用消息</title>
+    <url>/2024/02/06/%E6%8A%80%E6%9C%AF/CheckChan%E4%BD%BF%E7%94%A8n8n%E5%8F%91%E9%80%81%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%BA%94%E7%94%A8%E6%B6%88%E6%81%AF/</url>
+    <content><![CDATA[<p><a href="https://github.com/easychen/checkchan-dist"><strong>Check酱</strong></a>是方糖气球出品的网页内容监测工具，它包含一个Edge/Chrome<strong>浏览器插件</strong>和可以自行架设的<strong>云端</strong>，服务端已经在Github中开源。</p>
+<p>基于浏览器插件，它通过<strong>可视化选择器</strong>理论上可以监控网页上的任意内容（文本）、除了浏览器通知，还可以配合<a href="https://sct.ftqq.com/">Server酱</a>将异动推送到微信或手机。<br>
+<img src="https://alist.ihmr.link/d/images/article/checkchan.png" alt=""><br>
+配合消息推送配置将监控内容变化推送到微信及手机，只支持自定义webhook和server酱两种方式推送消息。本着能不花钱就不花钱的原则，我使用自建webhook的方式去推送消息。<br>
+<img src="https://alist.ihmr.link/d/images/article/checkchan-webhook.png" alt=""><img src="https://alist.ihmr.link/d/images/article/serverchan.png" alt=""><br>
+<strong>解决方案：</strong><br>
+借助开源工作流项目n8n，自建webhook，并转发消息至企业微信应用消息。<br>
+<font color="#ffc000">n8n</font>的GitHub地址：<a href="https://github.com/n8n-io/n8n">GitHub - n8n-io/n8n: Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.</a><br>
+自建webhook的方法：</p>
+<ol>
+<li>在n8n中设置一条工作流。<img src="https://alist.ihmr.link/d/images/article/n8n-1.png" alt=""></li>
+<li>n8n中设置起始节点接收checkChan发送的webhook请求。<img src="https://alist.ihmr.link/d/images/article/n8n-2.png" alt=""></li>
+<li>设置数据转换节点，将webhook请求体的数据转为企业微信应用消息的请求体。<img src="https://alist.ihmr.link/d/images/article/n8n-3.png" alt=""></li>
+<li>设置HTTP Requese请求节点，发送企业微信应用消息。<img src="https://alist.ihmr.link/d/images/article/n8n-4.png" alt=""></li>
+<li>激活工作流，激活后webhook会自动监听请求接收checkchan的消息。<img src="https://alist.ihmr.link/d/images/article/n8n-5.png" alt=""></li>
+<li>浏览器插件checkchan的webhook设置填写工作流的webhook监听地址。<font color="#ff0000">需要注意的是我的n8n部署在内网，工作流中显示的是局域网地址，如果想要链接可用需要把n8n的服务端口暴露出来，至于用内网穿透方式还是自带公网ip放开防火墙端口就看自己哪个可以用了，不详细去描述。</font><img src="https://alist.ihmr.link/d/images/article/message.jpg" alt="">n8n只是一个工具，如果有其他可以类似功能的工具也可以实现消息推送，比如用java写接口，让checkchan去调用，自动转发消息到企业微信应用机器人也可以实现。<br>
+<font color="#f79646">附：工作流配置文件可以导入我已经配置好的的json文件（需要改一下后缀名）。内容需要改的地方，企业微信应用机器人webhook地址需要自行替换。</font><br>
+文件分享地址：<a href="https://wwd.lanzouj.com/iVTKc1nijeof">checkchan.txt</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>CheckChan、n8n、企业微信应用</tag>
+      </tags>
+  </entry>
+</search>
